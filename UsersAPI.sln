@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{447B9A32
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{92DD604E-2F28-4302-AE35-A7D93FE407A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICallsService", "src\APICallsService\APICallsService.csproj", "{74B49889-0EF2-4C70-853D-A15A68B05F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clients", "src\APICallsService\Clients.csproj", "{74B49889-0EF2-4C70-853D-A15A68B05F7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

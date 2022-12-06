@@ -15,7 +15,7 @@ builder.Services.AddHttpClient("UsersClient", c =>
     c.BaseAddress = new Uri($"https://jsonplaceholder.typicode.com/users");
 });
 
-builder.Services.AddTransient<IExternalUsersClient, ExternalUsersClient>();
+builder.Services.AddTransient<IExternalUsersClient, UsersClient>();
 builder.Services.AddTransient<IUsersService, UsersService>();
 
 

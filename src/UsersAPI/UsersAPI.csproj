@@ -4,6 +4,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>8749d01f-abcf-4d3f-8e05-747651688383</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,7 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\APICallsService\APICallsService.csproj" />
+		<ProjectReference Include="..\APICallsService\Clients.csproj" />
 		<ProjectReference Include="..\Services\Services.csproj" />
 	</ItemGroup>
 

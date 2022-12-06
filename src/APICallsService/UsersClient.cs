@@ -10,24 +10,24 @@ using Core.Entities;
 
 namespace APICallsService
 {
-    public class ExternalUsersClient : IExternalUsersClient
+    public class UsersClient : IExternalUsersClient
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public ExternalUsersClient(IHttpClientFactory httpClientFactory)
+        public UsersClient(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
         public async Task<List<UserEntity>> GetUsersFromAPIAsync()
         {
             var ratesObject = await FetchDataFromAPIAsync();
-            return ratesObject;//MapDataToEntity(ratesObject);
+            return MapDataToEntity(ratesObject);
             
         }
 
-        public async Task<List<UserEntity>?> FetchDataFromAPIAsync()
+        public async Task<List<UserJsonModel>?> FetchDataFromAPIAsync()
         {
-            var ratesObject = new List<UserEntity>();
+            var ratesObject = new List<UserJsonModel>();
 
             using (var client = _httpClientFactory.CreateClient("UsersClient"))
             {
@@ -41,13 +41,13 @@ namespace APICallsService
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     WriteIndented = true
                 };
-                ratesObject = jsonDocument.RootElement.Deserialize<List<UserEntity>>(serializeOptions);
+                ratesObject = jsonDocument.RootElement.Deserialize<List<UserJsonModel>>(serializeOptions);
 
             }
             return ratesObject;
         }
 
-        private static List<UserEntity> MapDataToEntity(List<RawUserObject> ratesObject)
+        private static List<UserEntity> MapDataToEntity(List<UserJsonModel> ratesObject)
         {
             var currencyExchangeRateDTOs = new List<UserEntity>();
 
@@ -56,12 +56,12 @@ namespace APICallsService
 
                 currencyExchangeRateDTOs.Add(new UserEntity
                 {
-                    Id = prop.id,
-                    Name = prop.name,
-                    Username = prop.username,
-                    Email = prop.email,
-                    Street = prop.address.street,
-                    City = prop.address.city,
+                    Id = prop.Id,
+                    Name = prop.Name,
+                    Username = prop.Username,
+                    Email = prop.Email,
+                    Street = prop?.Address?.Street,
+                    City = prop?.Address?.City,
                 });
 
             }
